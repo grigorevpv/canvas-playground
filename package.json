@@ -1,0 +1,12 @@
+{
+  "name": "canvas-playground",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "yarn run build && yarn run dev",
+    "dev": "parcel",
+    "build": "parcel build src/index.ts"
+  },
+  "devDependencies": {
+    "parcel": "latest"
+  }
+}
