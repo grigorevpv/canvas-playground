@@ -1,0 +1,12 @@
+.page-content {
+    height: 100%;
+    margin: 25px;
+    display: grid;
+    grid-gap: 20px;
+    grid-auto-rows: 300px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.page-content_item {
+    display: flex;
+}

@@ -4,9 +4,12 @@
   "scripts": {
     "start": "yarn run build && yarn run dev",
     "dev": "parcel",
-    "build": "parcel build src/index.ts"
+    "build": "echo 'start'"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "eslint": "^8.10.0",
     "parcel": "latest"
   }
 }
