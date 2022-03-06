@@ -1,32 +1,67 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8" />
-  <title>Canvas playground</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script type="module" src="./scripts/preview.ts"></script>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Canvas playground</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./scripts/preview.ts"></script>
+  </head>
 
-<body>
-  <div class="page-content">
-    <div class="page-content_item">
-      <canvas id="dragonId" width="300px" height="300px"></canvas>
-      <button onclick="window.onPreviewClick(this)">Preview</button>
-      <button onclick="window.onPreviewClick(this)">Reset</button>
+  <body>
+    <div class="page-content">
+      <div class="page-content_item">
+        <canvas id="dragonId"></canvas>
+        <div class="page-content_item-buttons">
+          <button
+            data-canvas-id="dragonId"
+            onclick="window.onPreviewClick(this)"
+          >
+            Preview
+          </button>
+          <button
+            data-canvas-id="dragonId"
+            onclick="window.onResetClick(this)"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+      <div class="page-content_item">
+        <canvas style="background: antiquewhite;"></canvas>
+        <div class="page-content_item-buttons">
+          <button
+            data-canvas-id=""
+            onclick="window.onPreviewClick(this)"
+          >
+            Preview
+          </button>
+          <button
+            data-canvas-id=""
+            onclick="window.onResetClick(this)"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+      <div class="page-content_item">
+        <canvas style="background: antiquewhite;"></canvas>
+        <div class="page-content_item-buttons">
+          <button
+            data-canvas-id=""
+            onclick="window.onPreviewClick(this)"
+          >
+            Preview
+          </button>
+          <button
+            data-canvas-id=""
+            onclick="window.onResetClick(this)"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="page-content_item">
-      <canvas width="300px" height="300px" style="background: antiquewhite;"></canvas>
-      <button onclick="window.onPreviewClick(this)">Preview</button>
-      <button onclick="window.onPreviewClick(this)">Reset</button>
-    </div>
-    <div class="page-content_item">
-      <canvas width="300px" height="300px" style="background: antiquewhite;"></canvas>
-      <button onclick="window.onPreviewClick(this)">Preview</button>
-      <button onclick="window.onPreviewClick(this)">Reset</button>
-    </div>
-  </div>
-  <!-- <script type="module" src="./index.js"></script> -->
-</body>
+  </body>
 
 </html>

@@ -1,9 +1,11 @@
+import { dragonId } from "../constants";
+import { Example } from "../types";
 import { randomRgbColor } from "../utils/color";
 
 let infiniteFillRectStarted = false;
 let mouseMoveCbFn = null;
 
-export function stopDraw() {
+export function stopDrowing() {
     if (mouseMoveCbFn) {
         document.removeEventListener("mousemove", mouseMoveCbFn);
         mouseMoveCbFn = null;
@@ -12,7 +14,7 @@ export function stopDraw() {
     infiniteFillRectStarted = false;
 }
 
-export function draw(id: string) {
+function drow(id: string) {
   const canvas = document.getElementById(id) as HTMLCanvasElement;
   const ctx = canvas.getContext("2d");
 
@@ -61,9 +63,17 @@ function movePoint(ctx) {
     prevPosition.y = my;
 
     ctx.beginPath();
-    ctx.arc(mx, my, 5, 0, Math.PI * 2, true);
+    ctx.arc(mx - 30, my - 25, 5, 0, Math.PI * 2, true);
     ctx.closePath();
     ctx.fillStyle = randomRgbColor();
     ctx.fill();
   }
 }
+
+const dragonExample: Example = {
+  id: dragonId,
+  stopDrowing: stopDrowing,
+  drow: drow,
+}
+
+export default dragonExample;

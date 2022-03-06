@@ -7,6 +7,6 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.page-content_item {
+.page-content_item-buttons {
     display: flex;
 }

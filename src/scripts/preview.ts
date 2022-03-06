@@ -1,10 +1,9 @@
 import { canvasIdsArr, canvasIdsArrType } from "../constants";
-import { drawCanvasItem } from "./loader"
+import { drawCanvasItem, stopDrawingCanvasItem } from "./loader"
 
-function onPreviewClick(canvasElement: HTMLElement) {
+function onPreviewClick(button: HTMLElement) {
     try {
-        const parent = canvasElement.parentElement;
-        const canvasId = parent.getElementsByTagName("canvas")[0].id as canvasIdsArrType;
+        const canvasId = button.dataset.canvasId as canvasIdsArrType;
 
         if (canvasIdsArr.includes(canvasId)) {
             drawCanvasItem(canvasId);
@@ -16,10 +15,17 @@ function onPreviewClick(canvasElement: HTMLElement) {
     }
 }
 
+function onResetClick(button: HTMLElement) {
+    const canvasId = button.dataset.canvasId as canvasIdsArrType;
+    stopDrawingCanvasItem(canvasId);
+}
+
 window.onPreviewClick = onPreviewClick;
+window.onResetClick = onResetClick;
 
 declare global {
     interface Window {
         onPreviewClick: (el: HTMLElement) => void;
+        onResetClick: (el: HTMLElement) => void;
     }
 }
