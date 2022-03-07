@@ -19,7 +19,6 @@ function drow(id: string) {
   const ctx = canvas.getContext("2d");
 
   fillRect(ctx, "rgba(0,0,0)");
-  const movePointCb = movePoint(ctx);
   mouseMoveCbFn = (e: MouseEvent) => {
     requestAnimationFrame(() => {
       if (!infiniteFillRectStarted) {
@@ -27,7 +26,7 @@ function drow(id: string) {
         infiniteFillRect(ctx);
       }
 
-      movePointCb(e);
+      movePoint(ctx, e);
     });
   };
 
@@ -46,28 +45,24 @@ function fillRect(ctx: CanvasRenderingContext2D, color: string) {
   ctx.fillRect(0, 0, width, height);
 }
 
-function movePoint(ctx) {
-  const { x, y, width, height } = ctx.canvas.getBoundingClientRect();
-  const prevPosition = {
-    x: width / 2,
-    y: height / 2,
+function movePoint(ctx: CanvasRenderingContext2D, e: MouseEvent) {
+  const { x, y, width, height, top, left } = ctx.canvas.getBoundingClientRect();
+  const scaleX = ctx.canvas.width / width;
+  const scaleY = ctx.canvas.height / height;
+  const [mx, my] = [e.clientX, e.clientY];
+
+  const xPos = (mx - left) * scaleX;
+  const yPos = (my - top) * scaleY;
+
+  if (mx >= x + width || mx <= x || my >= y + height || mx <= y) {
+    return;
   }
-  return (e) => {
-    const [mx, my] = [e.clientX, e.clientY];
 
-    if (mx >= x + width || mx <= x || my >= y + height || mx <= y) {
-      return;
-    }
-
-    prevPosition.x = mx;
-    prevPosition.y = my;
-
-    ctx.beginPath();
-    ctx.arc(mx - 30, my - 25, 5, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fillStyle = randomRgbColor();
-    ctx.fill();
-  }
+  ctx.beginPath();
+  ctx.arc(xPos, yPos, 5, 0, Math.PI * 2, false);
+  ctx.closePath();
+  ctx.fillStyle = randomRgbColor();
+  ctx.fill();
 }
 
 const dragonExample: Example = {
